@@ -1,12 +1,13 @@
-import { CategoryButton } from "@/components/category-button";
-import { Header } from "@/components/header";
+import { useRef, useState } from "react";
 import { View, FlatList, SectionList, Text } from "react-native";
 import { Link } from "expo-router";
 
-import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products";
-import { useState, useRef } from "react";
-import { Product } from "@/components/product";
 import { useCartStore } from "@/stores/cart-store";
+import { CATEGORIES, MENU, ProductProps } from "@/utils/data/products";
+
+import { Header } from "@/components/header";
+import { Product } from "@/components/product";
+import { CategoryButton } from "@/components/category-button";
 
 export default function Home() {
   const cartStore = useCartStore();
@@ -19,7 +20,7 @@ export default function Home() {
     0
   );
 
-  function handleCategorySelected(selectedCategory: string) {
+  function handleCategorySelect(selectedCategory: string) {
     setCategory(selectedCategory);
 
     const sectionIndex = CATEGORIES.findIndex(
@@ -36,7 +37,7 @@ export default function Home() {
   }
 
   return (
-    <View className="bg-slate-900 flex-1">
+    <View className="flex-1 pt-12">
       <Header title="Faça seu pedido" cartQuantityItems={cartQuantityItems} />
 
       <FlatList
@@ -46,7 +47,7 @@ export default function Home() {
           <CategoryButton
             title={item}
             isSelected={item === category}
-            onPress={() => handleCategorySelected(item)}
+            onPress={() => handleCategorySelect(item)}
           />
         )}
         horizontal

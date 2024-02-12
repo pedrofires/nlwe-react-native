@@ -1,7 +1,5 @@
-import { SafeAreaView } from "react-native";
-
 import { Slot } from "expo-router";
-
+import { SafeAreaView } from "react-native";
 import {
   useFonts,
   Inter_400Regular,
@@ -24,7 +22,7 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-900 pt-12">
+    <SafeAreaView className="flex-1 bg-slate-900">
       <Slot />
     </SafeAreaView>
   );
